@@ -28,6 +28,42 @@ python3 -m http.server 8000
 
 ブラウザで <http://localhost:8000> を開いてください。入力情報はサーバーや外部APIへ送信されません。
 
+## iPadで完成画面をプレビューする
+
+GitHub Pagesへ公開すると、iPadのSafariからURLを押すだけで確認できます。このリポジトリには公開用のGitHub Actions設定も含まれています。
+
+1. GitHubでこのリポジトリのページを開きます。
+2. 上部にある **Settings** を押します。
+3. 左側メニューの **Pages** を押します。
+4. 「Build and deployment」の「Source」で **GitHub Actions** を選びます。
+5. 上部の **Actions** を押します。
+6. 左側の **iPad preview (GitHub Pages)** を押します。
+7. 右側の **Run workflow** を押し、もう一度緑色の **Run workflow** を押します。
+8. 1〜2分待ち、完了して緑色になった実行結果を押します。
+9. **deploy** を押し、「Deploy to GitHub Pages」に表示されるURLを押します。
+10. そのURLをメールやメッセージでiPadへ送り、iPadのSafariで押します。
+11. 最初の画面で **入力せず完成画面をプレビュー** を押すと、結果画面をすぐ確認できます。
+
+公開URLの末尾に `?preview=result` を付けると、結果画面を直接開くこともできます。
+
+```text
+https://ユーザー名.github.io/リポジトリ名/?preview=result
+```
+
+> リポジトリが非公開の場合、GitHubの契約プランによってはPagesを公開できない場合があります。その場合はリポジトリを公開にするか、下記の同じWi-Fiで見る方法を使ってください。
+
+### パソコンとiPadを同じWi-Fiにつないで見る方法
+
+1. パソコンとiPadを同じWi-Fiへ接続します。
+2. パソコンでこのフォルダーを開きます。
+3. ターミナルを開き、`python3 -m http.server 8000 --bind 0.0.0.0` を入力してEnterを押します。
+4. 別のターミナルで、Macなら `ipconfig getifaddr en0`、Windowsなら `ipconfig` を入力し、パソコンのIPアドレスを確認します。
+5. iPadでSafariを押して開きます。
+6. アドレス欄へ `http://パソコンのIPアドレス:8000` と入力します（例：`http://192.168.1.20:8000`）。
+7. **入力せず完成画面をプレビュー** を押します。
+
+終了するときは、サーバーを動かしたターミナルで `Control` と `C` を同時に押してください。
+
 ## 占い計算部分の仕様
 
 ### 毎日の固定値

@@ -87,4 +87,9 @@ function share(){ const text=`今日の私へのメッセージ✨\n四柱推命
 fillDateInputs();
 $("birth-year").addEventListener("change",updateDays); $("birth-month").addEventListener("change",updateDays);
 $("birthday-form").addEventListener("submit",e=>{e.preventDefault(); const y=Number($("birth-year").value),m=Number($("birth-month").value),d=Number($("birth-day").value); if(!y||!m||!d){$("form-error").textContent="生年月日をすべて選んでください";return;} $("form-error").textContent="";render(buildResult(y,m,d));});
+// 完成画面をすぐ確認できるプレビュー。占い処理は通常入力とまったく同じです。
+$("demo-button").addEventListener("click",()=>render(buildResult(1990,1,1)));
 $("reroll-button").addEventListener("click",()=>{praiseRound++;renderPraises();}); $("share-button").addEventListener("click",share); $("reset-button").addEventListener("click",()=>{$("result-screen").hidden=true;$("input-screen").hidden=false;currentResult=null;window.scrollTo({top:0,behavior:"smooth"});});
+
+// URL末尾に ?preview=result を付けると、iPadなどで結果画面を直接プレビューできます。
+if(new URLSearchParams(window.location.search).get("preview")==="result") render(buildResult(1990,1,1));
